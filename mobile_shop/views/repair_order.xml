@@ -1,0 +1,66 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record id="view_repair_order_form_inherit" model="ir.ui.view">
+          <field name="name">repair.order.inherit.form</field>
+          <field name="model">repair.order</field>
+            <field name="inherit_id" ref="repair.view_repair_order_form"/>
+          <field name="arch" type="xml">
+                <xpath expr="//field[@name='operations']/tree/field[@name='price_unit']" position="before">
+                    <field name="vendor_name" context="{'default_repair_vendor':'True','default_supplier_rank':1}"/>  
+                    <field name="supplier"/>  
+
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="phone"/>  
+                </xpath>
+                <xpath expr="//field[@name='operations']/tree/field[@name='tax_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="////field[@name='operations']/tree/field[@name='product_id']" position="attributes">
+                    <attribute name="context">{'default_type':'rapair'}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="context">{'default_customer_rank':1}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="attributes">
+                    <attribute name="context">{'default_type':'consu'}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='operations']/tree/field[@name='price_unit']" position="after">
+                    <field name="part_cost" force_save="1"/>
+                    <field name="net_amount" force_save="1" readonly="1"/>
+                </xpath>
+          </field>
+    </record>
+    <record model="ir.ui.view" id="mobile_shop.exit_list">
+      <field name="name">exit.transactions</field>
+      <field name="model">exit.transactions</field>
+      <field name="arch" type="xml">
+        <tree editable="top" create="1" edit="1">
+          <field name="trans_type" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+          <field name="vendor_name" context="{'default_repair_vendor':'True','default_supplier_rank':1}" 
+                                    attrs="{'invisible': [('trans_type', '!=', 'vend')],'readonly': [('state', '!=', 'draft')]}"/>
+          <field name="employee_id" attrs="{'invisible': [('trans_type', '!=', 'in')],'readonly': [('state', '!=', 'draft')]}"/>
+          <field name="trans_date"/>
+          <field name="amount" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+          <field name="state" widget="badge" decoration-danger="state == 'rejected'" decoration-success="state == 'approved'"/>
+          <button name="apply_transaction" type="object" class="btn btn-link" icon="fa-save" string="Apply"
+           attrs="{'invisible': [('state', 'in', ('approved','rejected'))]}" groups="mobile_shop.group_Store_manager"/>
+          <button name="reject_transaction" type="object" class="btn btn-link"
+           attrs="{'invisible': [('state', '!=', 'approved'),('state', '=', 'rejected')]}"  icon="fa-warning" string="Reject" groups="mobile_shop.group_Store_manager"/>
+        
+        </tree>
+      </field>
+    </record> 
+    <record model="ir.actions.act_window" id="exit_transac_action_window">
+      <field name="name">الخوارج</field>
+      <field name="res_model">exit.transactions</field>
+      <field name="view_mode">tree</field>
+    </record>
+    <menuitem action="exit_transac_action_window" id="menu_repair_exit" parent="repair.menu_repair_order"/>
+    <menuitem groups="mobile_shop.group_Store_manager" name="Repair" id="repair.menu_repair_order"/>
+
+
+  </data>
+
+</odoo>

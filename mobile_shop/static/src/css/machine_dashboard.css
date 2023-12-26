@@ -1,0 +1,88 @@
+.o_action_manager {
+    overflow: auto !important;
+}
+
+.salon_dashboards {
+    padding-top: 10px;
+    width: 1300px;
+    height: 900px;
+    margin-left: 100px;
+    margin-top: 50px;
+    background-color: #f8faff !important;
+}
+.machine{
+    width: 250px;
+    height: 120px;
+    margin: 10px;
+    background-color: #bcbcbc !important;
+    border: 2px solid gray;
+    border-radius:10px;
+}
+.stat-text{
+    font-size:20px;
+    width: 100%;
+    color :#f8faff;
+    /* font-weight: bold; */
+}
+.total{
+    font-size:30px;
+    width: 100%;
+    color :#000;
+    /* font-weight: bold; */
+}
+
+.btton{
+    font-size:15px;
+    width: 50%;
+    color :#fff;
+    background-color: #000 !important;
+
+    /* font-weight: bold; */
+}
+
+.amount{
+    font-size: 25px ;
+    font-weight: bold;
+    color :#f8faff;
+    text-shadow: 0px 0px 20px #000000;
+    text-align: center; 
+
+}
+
+#momken{
+    width :150px;
+    height: 30px;
+}
+.fawry{
+    background-color: #d9bd08 !important;
+}
+.momken{
+    background-color: #6a0975 !important;
+}
+.aman{
+    background-color: #06a6ae !important;
+}
+.amwal{
+    background-color: #078a19 !important;
+}
+.bee{
+    background-color: #a25d0f !important;
+}
+.vc{
+    background-color: #b00909 !important;
+}
+.ipx{
+    background-color: #b6afaf !important;
+}
+.mach{
+    background-color: #170878 !important;
+}
+.exit{
+    background-color: #944646 !important;
+}
+.hold{
+    background-color: #818709 !important;
+}
+.cash{
+    background-color: #bcbcbc !important;
+}

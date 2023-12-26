@@ -1,0 +1,89 @@
+<odoo>
+    <data>
+        <record id="repair_vendor_report_wizard" model="ir.ui.view">
+            <field name="name">Repair Vendor Report Wizard</field>
+            <field name="model">repair.vendor.report.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Vendor Report">
+                    <group>
+                        <group>
+                            <field name="select_method"/>
+                        </group>
+                        <group>
+                            <field name="detailed" widget="boolean_toggle"/>
+
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="month" attrs="{'invisible': [('select_method', '=', 'date')]}"/>
+                        </group>
+                        <group>
+                            <field name="year" attrs="{'invisible': [('select_method', '=', 'date')]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="date_from" attrs="{'invisible': [('select_method', '!=', 'date')]}"/>
+                        </group>
+                        <group>
+                            <field name="date_to" attrs="{'invisible': [('select_method', '!=', 'date')]}"/>
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name="get_report" string="Get Report" type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                    </form>
+                </field>
+            </record>
+
+        <act_window id="action_repair_vendor_report_wizard" name="تقرير الموردين" res_model="repair.vendor.report.wizard" view_mode="form" target="new"/>
+        <menuitem action="action_repair_vendor_report_wizard" id="menu_repair_vendor_report" parent="repair.repair_menu_reporting"/>
+
+       
+        
+        <report id="repair_vendor_report_wizarda"
+            model="repair.vendor.report.wizard"
+            string="Repair Report"
+            report_type="qweb-pdf"
+            name="mobile_shop.repair_vendor_report_wizard_view"
+            paperformat="mobile_shop.paperformat_repair_report_wizard"
+            menu="False"/>
+
+        <template id="repair_vendor_report_wizard_view">
+            <t t-call="web.html_container">
+                <link href="/mobile_shop/static/src/css/style.css" rel="stylesheet"/>
+                <div class="all_temp">
+                <div class="header" style="border-bottom: 2px solid black;" lang="ar" dir="rtl">
+                    <h3 class="text-center">تقرير الموردين فى مده
+                        <span style="font-size: 16px;">
+                            <strong>من </strong>: <t t-esc="date_start"/>
+                            <strong>إلى</strong>: <t t-esc="date_end"/>
+                        </span>
+                    </h3>
+                </div>
+                        <div class="article mt0 o_report_layout_standard" lang="ar" dir="rtl">
+
+                <table class="table table-bordered border-primary" >
+                    <thead>
+                        <th class="text-center">المورد</th>
+                        <th class="text-center">العدد</th>
+                        <th class="text-center">الاجمالى</th>
+                        <th class="text-center">المدفوع</th>
+                        <th class="text-center">الباقى</th>
+                    </thead>
+                    
+                </table>
+                
+
+                </div>
+                </div>
+
+            </t>
+        </template> 
+
+  </data>
+</odoo>

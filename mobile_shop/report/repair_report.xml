@@ -1,0 +1,174 @@
+<odoo>
+    <data>
+        <record id="repair_report_wizard" model="ir.ui.view">
+            <field name="name">Repair Report Wizard</field>
+            <field name="model">repair.report.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Warehouse Report">
+                    <group>
+                        <group>
+                            <field name="select_method"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="month" attrs="{'invisible': [('select_method', '=', 'date')]}"/>
+                        </group>
+                        <group>
+                            <field name="year" attrs="{'invisible': [('select_method', '=', 'date')]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="date_from" attrs="{'invisible': [('select_method', '!=', 'date')]}"/>
+                        </group>
+                        <group>
+                            <field name="date_to" attrs="{'invisible': [('select_method', '!=', 'date')]}"/>
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name="get_report" string="Get Report" type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                    </form>
+                </field>
+            </record>
+
+        <act_window id="action_repair_report_wizard" name="تقرير الارباح" res_model="repair.report.wizard" view_mode="form" target="new"/>
+        <menuitem action="action_repair_report_wizard" id="menu_repair_report" parent="repair.repair_menu_reporting"/>
+
+        <record id="paperformat_repair_report_wizard" model="report.paperformat">
+            <field name="name">Repair Summary</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="page_width">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_right">0</field>
+            <field name="margin_left">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">15</field>
+            <field name="dpi">90</field>
+        </record>
+        
+        <report id="repair_report_wizarda"
+            model="repair.report.wizard"
+            string="Repair Report"
+            report_type="qweb-pdf"
+            name="mobile_shop.repair_report_wizard_view"
+            paperformat="mobile_shop.paperformat_repair_report_wizard"
+            menu="False"/>
+
+        <template id="repair_report_wizard_view">
+            <t t-call="web.html_container">
+                <link href="/mobile_shop/static/src/css/style.css" rel="stylesheet"/>
+                <div class="all_temp">
+                <div class="header" style="border-bottom: 2px solid black;" lang="ar" dir="rtl">
+                    <h3 class="text-center">تقرير ارباح الصيانة فى مده
+                        <span style="font-size: 16px;">
+                            <strong>من </strong>: <t t-esc="date_start"/>
+                            <strong>إلى</strong>: <t t-esc="date_end"/>
+                        </span>
+                    </h3>
+                </div>
+                        <div class="article mt0 o_report_layout_standard" lang="ar" dir="rtl">
+
+                <table class="table table-bordered border-primary" >
+                    <thead>
+                        <th class="text-center">التاريخ</th>
+                        <th class="text-center">المنتج</th>
+                        <th class="text-center">التصليح</th>
+                        <th class="text-center">السعر</th>
+                        <th class="text-center">التكلفة</th>
+                        <th class="text-center">الربح</th>
+                    </thead>
+                    <t t-foreach="docs" t-as="doc">
+                        <tr>
+                            <td class="text-center"><span t-esc="doc['date']"/></td>
+                            <td class="text-center"><span t-esc="doc['main_product_id']"/></td>
+                            <td class="text-center"><span t-esc="doc['product_id']"/></td>
+                            <td class="text-center"><span t-esc="doc['unit_price']"/></td>
+                            <td class="text-center"><span t-esc="doc['part_cost']"/></td>
+                            <td class="text-center"><span t-esc="doc['net_amount']"/></td>   
+                        </tr>
+                    </t>
+                </table>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-4 p-3 border border-1 border-dark">الاجمالى</div>
+
+                            <div class="col-4 p-3 border border-1 border-dark"><span t-esc="sum_unit_price_balance"/></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-4 p-3 border border-1 border-dark">إجمالى التكلفة</div>
+
+                            <div class="col-4 p-3 border border-1 border-dark"><span t-esc="sum_part_cost_balance"/></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-4 p-3 border border-1 border-dark">مدفوعات الموردين</div>
+
+                            <div class="col-4 p-3 border border-1 border-dark"><span t-esc="sum_vendor_amount_balance"/></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-4 p-3 border border-1 border-dark">إجمالى التوصيل</div>
+
+                            <div class="col-4 p-3 border border-1 border-dark"><span t-esc="sum_delivery_balance"/></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-4 p-3 border border-1 border-dark">إجمالى الخوارج</div>
+
+                            <div class="col-4 p-3 border border-1 border-dark"><span t-esc="sum_exit_amount_balance"/></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-4 p-3 border border-1 border-dark">إجمالى الارباح المحل</div>
+
+                            <div class="col-4 p-3 border border-1 border-dark"><span t-esc="sum_store_balance"/></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-4 p-3 border border-1 border-dark">أرباح مهندس الصيانة</div>
+
+                            <div class="col-4 p-3 border border-1 border-dark"><span t-esc="sum_worker_balance"/></div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                </div>
+                </div>
+
+            </t>
+        </template> 
+
+  </data>
+</odoo>

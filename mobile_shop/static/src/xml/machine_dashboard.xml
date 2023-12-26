@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+  <t t-name="MachineDashboardMain">
+    <div class="salon_dashboards text-center">
+      <div class="container-fluid spa_salon_dashboard">
+      </div>
+    </div>
+  </t>
+  <t t-name="MachineDashBoard">
+    <link rel="stylesheet" href="/mobile_shop/static/src/css/salon_dashboard.css"/>
+    <div class="container text-center">
+    <div class="row">
+            <div class="col machine totals">
+                <div class="stat-text total">الإجمالى</div>
+                <div class="amount" id="total2"></div>
+            </div>
+            <div class="col machine repre">
+                <div class="stat-text total">الصافى</div>
+                <div class="amount" id="net"></div>
+                <button type="button" id="transfer" class="btn btn-primary mb-3 btton">تحويل الصافى للمبيع</button>
+
+            </div>
+            <div class="col machine repre">
+                <div class="stat-text total">المناديب</div>
+                <div class="amount" id="repre2"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col machine fawry">
+                <div class="stat-text">فورى</div>
+                <div class="amount" id="fawry2"></div>
+                <button type="button" id="fawry" class="btn btn-primary mb-3 btton">جرد</button>
+
+
+            </div>
+            <div class="col machine momken">
+                <div class="stat-text">ممكن</div>
+                <div class="amount" id="momken2"></div>
+                <button type="button" id="momken" class="btn btn-primary mb-3 btton">جرد</button>
+
+            </div>
+            <div class="col machine aman">
+                <div class="stat-text">أمان</div>
+                <div class="amount" id="aman2"></div>
+                <button type="button" id="aman" class="btn btn-primary mb-3 btton">جرد</button>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col machine amwal">
+                <div class="stat-text">أموال</div>
+                <div class="amount" id="amwal2"></div>
+                <button type="button" id="amwal" class="btn btn-primary mb-3 btton">جرد</button>
+            </div>
+            <div class="col machine bee">
+                <div class="stat-text">Bee</div>
+                <div class="amount" id="bee2"></div>
+                <button type="button" id="bee" class="btn btn-primary mb-3 btton">جرد</button>
+            </div>
+            <div class="col machine vc">
+                <div class="stat-text">Vodafone Cash</div>
+                <div class="amount" id="vc2"></div>
+                <button type="button" id="vc" class="btn btn-primary mb-3 btton">جرد</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col machine ipx">
+                <div class="stat-text">Iphone X</div>
+                <div class="amount" id="ipx2"></div>
+                <button type="button" id="ipx" class="btn btn-primary mb-3 btton">جرد</button>
+            </div>
+            <div class="col machine cash">
+                <div class="stat-text">نقدى</div>
+                <div class="amount" id="cash2"></div>
+                <button type="button" id="cash" class="btn btn-primary mb-3 btton">جرد</button>
+
+            </div>
+            <div class="col machine exit">
+                <div class="stat-text">الخوارج</div>
+                <div class="amount" id="exit2"></div>
+                <button type="button" id="exit" class="btn btn-primary mb-3 btton">إضافة خوارج</button>
+
+            </div>
+        </div>
+    </div>
+    <article role="main" id="chairs_dashboard_view">
+      <!--filled from js-->
+    </article>
+  </t>
+</templates>

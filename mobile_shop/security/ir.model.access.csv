@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_money_machine_user,money.machine,model_money_machine,mobile_shop.group_store_user,1,0,0,0
+access_money_machine_manager,money.machine,model_money_machine,mobile_shop.group_Store_manager,1,1,1,1
+access_machine_transactions,machine.transactions,model_machine_transactions,base.group_user,1,1,1,1
+access_machine_representative,machine.representative,model_machine_representative,base.group_user,1,1,1,1
+access_representative_transactions_user,representative.transactions,model_representative_transactions,mobile_shop.group_store_user,1,0,1,0
+access_representative_transactions_manager,representative.transactions,model_representative_transactions,mobile_shop.group_Store_manager,1,1,1,1
+access_machine_adjust,machine.adjust,model_machine_adjust,base.group_user,1,1,1,1
+access_machine_inventory,machine.inventory,model_machine_inventory,base.group_user,1,1,1,1
+access_repair_report_wizard,repair.report.wizard,model_repair_report_wizard,base.group_user,1,1,1,1
+access_repair_vendor_report_wizard,repair.vendor.report.wizard,model_repair_vendor_report_wizard,base.group_user,1,1,1,1
+access_exit_transactions_user,exit.transactions,model_exit_transactions,mobile_shop.group_store_user,1,0,1,0
+access_exit_transactions_manager,exit.transactions,model_exit_transactions,mobile_shop.group_Store_manager,1,1,1,1
+access_repair_order_user,repair.order,model_repair_order,mobile_shop.group_repair_user,1,1,1,1
+access_repair_user,repair.order,model_repair_order,mobile_shop.group_store_user,0,0,0,0

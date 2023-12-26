@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="machine_adjust_wizard" model="ir.ui.view">
+            <field name="name">جرد الماكينة</field>
+            <field name="model">machine.adjust</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="جرد الماكينة">
+                    <group>
+                        <group>
+                            <label for="machine_id"/>
+                            <h3><field name="machine_id"/></h3>
+                        </group>
+                        <group>
+                            <label for="trans_date"/>
+                            <h3> <field name="trans_date"/></h3>
+                            <label for="counted"/>
+                            <h3> <field name="counted"/></h3>
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name="send_adjust" string="جرد" type="object"/>
+                        <button name="cancel" string="إلغاء" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

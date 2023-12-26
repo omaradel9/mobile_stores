@@ -1,0 +1,17 @@
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+.all_temp{
+    font-family:'Droid Arabic Naskh', serif;
+    font-size:15px;
+    direction:rtl;
+    font-weight: bold;
+
+}
+.mt16{
+    font-family:'Droid Arabic Naskh', serif;
+    font-size:20px;
+    direction:rtl;
+    font-weight: bold;
+
+}
+
+

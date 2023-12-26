@@ -1,0 +1,83 @@
+
+<div class="row main-section">
+      <div class="col-sm-6 col-md-3-12 col-md-6 col-lg-3 machine fawry">
+        <div class="salon-card">
+          <div class="salon-card-body">
+            <div class="stat-widget-one">
+              <div class="stat-icon">
+                <i class="fa fa-calendar"/>
+              </div>
+              <div class="stat-content">
+                <div class="stat-text">فورى</div>
+                <div class="stat-digit" id="bookings_count">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3-12 col-md-6 col-lg-3 machine momken">
+        <div class="salon-card">
+          <div class="salon-card-body">
+            <div class="stat-widget-one">
+              <div class="stat-icon">
+                <i class="fa fa-calendar"/>
+              </div>
+              <div class="stat-content">
+                <div class="stat-text">ممكن</div>
+                <div class="stat-digit" id="orders_count">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3-12 col-md-6 col-lg-3 machine aman">
+        <div class="salon-card">
+          <div class="salon-card-body">
+            <div class="stat-widget-one">
+              <div class="stat-icon">
+                <i class="fa fa-calendar"/>
+              </div>
+              <div class="stat-content">
+                <div class="stat-text">أمان</div>
+                <div class="stat-digit" id="customer_count">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3-12 col-md-6 col-lg-3 machine amwal">
+        <div class="salon-card">
+          <div class="salon-card-body">
+            <div class="stat-widget-one">
+              <div class="stat-icon">
+                <i class="fa fa-money"/>
+              </div>
+              <div class="stat-content">
+                <div class="stat-text">أموال</div>
+                <div class="stat-digit" id="recent_count">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3-12 col-md-6 col-lg-3 machine bee">
+        <div class="salon-card">
+          <div class="salon-card-body">
+            <div class="stat-widget-one">
+              <div class="stat-icon">
+                <i class="fa fa-user "/>
+              </div>
+              <div class="stat-content">
+                <div class="stat-text">Bee</div>
+                <div class="stat-digit" id="clients_count">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
